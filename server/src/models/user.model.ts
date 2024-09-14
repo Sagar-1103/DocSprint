@@ -9,6 +9,7 @@ export interface IUser extends Document {
   avatar: string;
   password: string;
   refreshToken:string;
+  role:string;
 }
 
 const userSchema: Schema<IUser> = new Schema(
@@ -47,7 +48,7 @@ const userSchema: Schema<IUser> = new Schema(
     },
     refreshToken: {
         type: String,
-      },
+    },
   },
   {
     timestamps: true,

@@ -3,11 +3,12 @@ import { IUser } from "./user.model";
 
 export interface IDocument extends Document {
     title:string;
-    description:string;
-    users: {
-      user:IUser;
-      role:string;
-    }[]
+    description:Object;
+    docId:string
+    // users: {
+    //   user:IUser;
+    //   role:string;
+    // }[]
 }
 
 const documentSchema = new Schema({
@@ -17,22 +18,25 @@ const documentSchema = new Schema({
         trim:true,
     },
     description:{
-        type:String,
-        trim:true
+        type:Object,
     },
-    users:[
-        {
-            user:{
-                type:Schema.Types.ObjectId,
-                ref:"User"
-            },
-            role:{
-                type:String,
-                enum:["Admin","Editor","Viewer"],
-                default:"Viewer"
-            }
-        }
-    ]
+    docId:{
+        type:String,
+        required:true,
+    },
+    // users:[
+    //     {
+    //         user:{
+    //             type:Schema.Types.ObjectId,
+    //             ref:"User"
+    //         },
+    //         role:{
+    //             type:String,
+    //             enum:["Admin","Editor","Viewer"],
+    //             default:"Viewer"
+    //         }
+    //     }
+    // ]
 },{
     timestamps:true
 })

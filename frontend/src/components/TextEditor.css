@@ -1,0 +1,68 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F3F3F3;
+    margin: 0;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.container .ql-editor {
+    width: 8.5in;
+    min-height: 11in;
+    padding: 1in;
+    margin: 1rem auto; /* Center horizontally */
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .5);
+    background-color: white;
+    align-items: center;
+    display: block; /* Needed to center align the child elements */
+}
+
+.container .ql-container.ql-snow {
+    border: none;
+    display: flex;
+    justify-content: center;
+}
+
+.container .ql-toolbar.ql-snow {
+    display: flex;
+    position: sticky;
+    justify-content: center;
+    top: 0;
+    z-index: 10; /* Ensuring it is above other content */
+    background-color: #F3F3F3;
+    border: none;
+    width: 100%; /* Span the full width of the viewport */
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2);
+}
+
+/* Ensure a single page is printed when there's no content */
+@page {
+    margin: 1in;
+}
+
+@media print {
+    body {
+        background: none;
+    }
+
+    /* Ensure only one page is printed when empty */
+    .container .ql-editor {
+        width: 6.5in;
+        height: auto; /* Let content dictate the height */
+        min-height: 9in; /* Minimum height for a single page */
+        padding: 0.5in; /* Adjust padding for better print layout */
+        margin: 0 auto;
+        box-shadow: none;
+    }
+
+    .container .ql-toolbar.ql-snow {
+        display: none; /* Hide toolbar when printing */
+    }
+}

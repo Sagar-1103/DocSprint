@@ -29,6 +29,7 @@ app.use(cookieParser());
 app.use(express.json({limit:"16kb"}));
 
 import homeRouter from "./routes/home.routes"
+import userRouter from "./routes/user.routes"
 app.use("/api",homeRouter)
-
+app.use("/api/users",userRouter);
 export {server,io}
